@@ -1,0 +1,17 @@
+#wordbank = list of words
+#random num to select from the list
+
+#print 'try to guess the word by first guessing letters'
+#print 'you can only make 6 mistakes before losing the game'
+#prnt 'guess a letter'
+#print '_ _ _ _ _ _'
+#input guess
+
+import random
+
+def setup():
+    word_bank = ['color', 'coffee', 'dog', 'cat', 'book', 'video', 'computer']
+
+    selected_word = word_bank[random.randrange(0,(len(word_bank)))]
+
+
