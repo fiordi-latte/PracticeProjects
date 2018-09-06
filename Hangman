@@ -14,4 +14,69 @@ def setup():
 
     selected_word = word_bank[random.randrange(0,(len(word_bank)))]
 
+    #convert the selected word to list in order to identify location of correctly
+    #guessed letters
+    game_word = list(selected_word)
 
+    blank_list = []
+    for x in range(len(selected_word)):
+        blank_list.append('_')
+
+
+
+    game(game_word, blank_list)
+
+def game(game_word, blank):
+    p1 = incorrect([], 0)
+    win = False
+
+    print('Guess letters and attempt to figure out the word')
+    print('Make 6 wrong guesses and you lose')
+    print(game_word)
+
+    while not win:
+        guess = input('Guess a letter: ')
+        if guess in game_word:
+            print('You guessed a letter correctly!')
+
+            indices = [i for i, x in enumerate(game_word) if x == guess]
+            for y in indices:
+                blank[y] = guess
+            print(' '.join(blank))
+            print(blank)
+
+            if blank == game_word:
+                win = True
+        else:
+            print('That letter could not be found in the word')
+            p1.incorrect_guess(guess)
+            if p1.missed >= 6:
+                print('You lose')
+                break
+
+
+
+    #word_index = str(word_index)
+
+
+    print(p1.wrong_guess, p1.missed)
+
+def find(s, ch):
+    return [i for i, ltr in enumerate(s) if ltr == ch]
+
+
+def gameOver():
+    print('You lose')
+    return game_over
+
+
+class incorrect:
+    def __init__(self, wrong_guess, missed):
+        self.wrong_guess = []
+        self.missed = missed
+
+    def incorrect_guess(self, word):
+       self.wrong_guess.append(word)
+       self.missed += 1
+
+setup()
