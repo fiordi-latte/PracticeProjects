@@ -56,8 +56,6 @@ def game(game_word, blank):
 
 
 
-    #word_index = str(word_index)
-
 
     print(p1.wrong_guess, p1.missed)
 
